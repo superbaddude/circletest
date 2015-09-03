@@ -3,8 +3,8 @@ checkout:
         - git config --global url.git@github.com:.insteadOf https://github.com/
 
 machine:
-    go:
-        version: 1.5
+    pre:
+        - if [ ! -d $HOME/go1.5 ]; then echo "getting go1.5"; wget "https://storage.googleapis.com/golang/go1.5.linux-amd64.tar.gz"; tmpdir=$(mktemp -d); tar -C $tmpdir -zxvf $HOME/go1.5.linux-amd64.tar.gz; mv $tmpdir/go $HOME/go1.5; fi
 
 dependencies:
     pre:
