@@ -9,12 +9,5 @@ machine:
         GOROOT: $HOME/go1.5
         PATH: $GOROOT/bin:$PATH
 
-dependencies:
-    pre:
-        - sudo pip install awscli
-
-test:
-    override:
-        - go test -short ./...
 
 
