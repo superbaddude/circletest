@@ -1,0 +1,17 @@
+checkout:
+    pre:
+        - git config --global url.git@github.com:.insteadOf https://github.com/
+
+machine:
+    golang:
+        version: 1.5
+
+dependencies:
+    pre:
+        - sudo pip install awscli
+
+test:
+    override:
+        - go test -short ./...
+
+
