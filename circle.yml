@@ -7,6 +7,6 @@ machine:
         PATH: $GOROOT/bin:$PATH
 
 dependencies:
-    cache_directories: $HOME/go1.5
+    cache_directories: "$HOME/go1.5"
 
 
