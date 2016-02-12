@@ -13,5 +13,5 @@ dependencies:
 
 test:
     override:
-        - go test -v ./... | go2xunit -fail -output $CIRCLE_TEST_REPORTS/golang.xunit.xml
+        - go test -v ./... | go2xunit -fail | tee $CIRCLE_TEST_REPORTS/golang.xunit.xml
 
