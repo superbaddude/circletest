@@ -1,6 +1,11 @@
 package circletest
 
-import "testing"
+import (
+	"testing"
+	"time"
+
+	l4g "github.com/ezoic/log4go"
+)
 
 func Test_GolangVersion(t *testing.T) {
 	//when golang changes versions, it sometimes breaks code.  circleci does not allow
@@ -11,5 +16,7 @@ func Test_GolangVersion(t *testing.T) {
 	//	t.Fatalf("Expected golang version: %+v, actual: %s\n", expectedVersions, runtime.Version())
 	//}
 
+	l4g.Info("test")
 	t.Errorf("force a test failure")
+	time.Sleep(time.Millisecond * 30)
 }

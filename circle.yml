@@ -8,10 +8,11 @@ dependencies:
     pre:
         - if [ ! -d $HOME/go1.5 ]; then echo "getting go1.5"; wget "https://storage.googleapis.com/golang/go1.5.linux-amd64.tar.gz" -O $HOME/go1.5.linux-amd64.tar.gz; tmpdir=$(mktemp -d); tar -C $tmpdir -zxvf $HOME/go1.5.linux-amd64.tar.gz; mv $tmpdir/go $HOME/go1.5; else echo "go1.5 is already installed, woot!"; fi
         - if [ ! -f $HOME/.go_workspace/bin/go2xunit ]; then go get bitbucket.org/tebeka/go2xunit; fi
+        - if [ ! -d $CIRCLE_TEST_REPORTS/gotest ]; then mkdir $CIRCLE_TEST_REPORTS/gotest; fi
     cache_directories: 
         - ~/go1.5
 
 test:
     override:
-        - go test -v ./... | go2xunit -fail | tee $CIRCLE_TEST_REPORTS/golang.xunit.xml
+        - go test -v ./... | go2xunit -fail -output $CIRCLE_TEST_REPORTS/gotest/$CIRCLE_PROJECT_REPONAME.xunit.xml
 
